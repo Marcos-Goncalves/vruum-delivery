@@ -1,0 +1,22 @@
+version: '3'
+
+volumes:
+  mysql_dbdata:
+
+services:
+  mysql_database:
+    container_name: vruumDb
+    image: mysql:5.7
+    env_file: mysql.env
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_dbdata:/var/lib/mysql
+  
+  # adminer:
+  #   container_name: adminer
+  #   image: adminer
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8081:8080"
