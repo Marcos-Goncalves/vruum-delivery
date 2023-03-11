@@ -17,7 +17,8 @@ class CreateEntregasTable extends Migration
             $table->id();
             $table->string('enderecoPartida', 150)->nullable(false);
             $table->string('enderecoEntrega', 150)->nullable(false);
-            $table->string('status', 20)->default('DISPONÍVEL');
+            $table->string('obs', 200)->nullable();
+            $table->string('status', 20)->default('DISPONIVEL');
             $table->string('horarioEntrega', 50)->nullable();
             $table->timestamps();
         });
