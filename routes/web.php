@@ -14,12 +14,6 @@ use App\Http\Controllers\EntregasController;
 |
 */
 
-Route::get('/entrega', function() {
-    return view ('entrega');
-});
+Route::get('/entrega', [EntregasController::class, 'index']);
 
 Route::post('/entrega', [EntregasController::class, 'create']);
-
-Route::get('/', function () {
-    return view('welcome');
-});
