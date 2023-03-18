@@ -14,3 +14,5 @@
 
 - validar payload [ ]
 - salvar registro no banco [ ]
+- retornar status code 201 se tudo der certo [ ]
+- retornar 500 se o registro não for salvo [ ]

@@ -15,10 +15,13 @@ class CreateEntregasTable extends Migration
     {
         Schema::create('entregas', function (Blueprint $table) {
             $table->id();
-            $table->string('enderecoPartida', 150)->nullable(false);
-            $table->string('enderecoEntrega', 150)->nullable(false);
+            $table->unsignedBigInteger('idCliente');
+            $table->unsignedBigInteger('idEnderecoPartida')->nullable(false);
+            $table->unsignedBigInteger('idEnderecoEntrega')->nullable(false);
+            $table->string('numeroEndereco', 10)->nullable(false);
             $table->string('obs', 200)->nullable();
-            $table->string('status', 20)->default('DISPONIVEL');
+            $table->string('status', 20)->default('DISPONÍVEL');
+            $table->unsignedBigInteger('idMotoqueiro')->nullable(false);
             $table->string('horarioEntrega', 50)->nullable();
             $table->timestamps();
         });
