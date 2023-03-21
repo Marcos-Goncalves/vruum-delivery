@@ -15,7 +15,7 @@ class CreateEntregasTable extends Migration
     {
         Schema::create('entregas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idCliente');
+            $table->unsignedBigInteger('idCliente')->nullable(false);
             $table->unsignedBigInteger('idEnderecoPartida')->nullable(false);
             $table->unsignedBigInteger('idEnderecoEntrega')->nullable(false);
             $table->string('numeroEndereco', 10)->nullable(false);
