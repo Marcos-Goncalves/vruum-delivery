@@ -14,9 +14,14 @@ class EntregasController extends Controller
     public function create(Request $request) {
 
         $entrega = Entrega::create([
-            'enderecoPartida' => $request->enderecoPartida,
-            'enderecoEntrega' => $request->enderecoEntrega,
-            'obs' => $request->obs
+            'idCliente' => $request->idCliente,
+            'idEnderecoPartida' => $request->idEnderecoPartida,
+            'idEnderecoEntrega' => $request->idEnderecoEntrega,
+            'numeroEndereco' => $request->numeroEndereco,
+            'obs' => $request->obs,
+            'status' => $request->status,
+            'idMotoqueiro' => $request->idMotoqueiro,
+            'horarioEntrega' => $request->horarioEntrega
         ]);
 
         $entrega->save();
