@@ -12,12 +12,24 @@
     <form action="/entrega" method="POST">
         @csrf
         <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Cliente</label>
+            <input type="text" class="form-control" name="idCliente" placeholder="Cliente...">
+        </div>
+        <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Endereço de partida</label>
-            <input type="text" class="form-control" name="enderecoPartida" id="inputEnderecoPartida" placeholder="Rua...">
+            <input type="text" class="form-control" name="idEnderecoPartida" id="inputEnderecoPartida" placeholder="Rua...">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Endereço de entrega</label>
-            <input type="text" class="form-control" name="enderecoEntrega" id="inputEnderecoEntrega" placeholder="Rua...">
+            <input type="text" class="form-control" name="idEnderecoEntrega" placeholder="Rua...">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Número</label>
+            <input type="text" class="form-control" name="numeroEndereco" placeholder="Número...">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">idMotoqueiro</label>
+            <input type="text" class="form-control" name="idMotoqueiro" placeholder="idMotoqueiro...">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">OBSERVAÇÕES</label>
