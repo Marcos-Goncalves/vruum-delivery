@@ -8,7 +8,13 @@ use App\Models\Entrega;
 class EntregasController extends Controller
 {
     public function index(Request $request){
-        return view('entrega');
+        return view('createEntrega');
+    }
+
+    public function read(Request $request){
+        $entregas = Entrega::all();
+
+        return $entregas;
     }
 
     public function create(Request $request) {
@@ -26,5 +32,15 @@ class EntregasController extends Controller
         $entrega->save();
 
         return redirect('entrega');
+    }
+
+    public function edit($id){
+        $entrega = Entrega::find($id);
+        return view('editEntrega', ['entrega'=> $entrega]);
+    }
+
+    public function update(Request $request){
+        Entrega::find($request->id)->update($request->all());
+        return redirect('/entrega');
     }
 }
