@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntregasController;
 
@@ -14,6 +15,7 @@ use App\Http\Controllers\EntregasController;
 |
 */
 
+##Entregas
 Route::get('/entrega', [EntregasController::class, 'index']);
 
 Route::post('/entrega', [EntregasController::class, 'create']);
@@ -21,3 +23,11 @@ Route::get('/entrega/all', [EntregasController::class, 'read']);
 
 Route::get('entrega/edit/{id}', [EntregasController::class, 'edit']);
 Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
+
+
+##Clientes
+Route::get('/cliente', [ClientesController::class, 'index']);
+Route::post('/cliente', [ClientesController::class, 'create']);
+
+Route::get('/cliente/edit/{id}', [ClientesController::class, 'edit']);
+Route::put('/cliente/update/{id}', [ClientesController::class, 'update']);

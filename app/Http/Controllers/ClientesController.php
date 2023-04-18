@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Cliente;
+
+class ClientesController extends Controller
+{
+    public function index(){
+        return view('createCliente');
+    }
+
+    public function create(Request $request){
+
+        $cliente = Cliente::create([
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'avaliacao' => $request->avaliacao
+        ]);
+
+        $cliente->save();
+
+        return redirect('cliente');
+    }
+
+    public function edit($id){
+        $cliente = Cliente::find($id);
+        return view('editCliente', ['cliente'=>$cliente]);
+    }
+
+    public function update(Request $request){
+        Cliente::find($request->id)->update($request->all());
+        return redirect('/cliente');
+    }
+}
