@@ -3,6 +3,9 @@
 use App\Http\Controllers\ClientesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntregasController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MotoqueirosController;
+use App\Http\Controllers\RegistroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +34,30 @@ Route::post('/cliente', [ClientesController::class, 'create']);
 
 Route::get('/cliente/edit/{id}', [ClientesController::class, 'edit']);
 Route::put('/cliente/update/{id}', [ClientesController::class, 'update']);
+
+##Motoqueiros
+Route::get('/motoqueiro', [MotoqueirosController::class, 'index']);
+Route::post('/motoqueiro', [MotoqueirosController::class, 'create']);
+
+Route::get('/motoqueiro/edit/{id}', [MotoqueirosController::class, 'edit']);
+Route::put('/motoqueiro/update/{id}', [MotoqueirosController::class, 'update']);
+
+##Login
+Route::get('/login', [LoginController::class, 'loginForm']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/home', function(){
+    return view('home');
+});
+
+##Registro
+Route::get('/registro', [RegistroController::class, 'registroForm']);
+Route::post('/registro', [RegistroController::class, 'registro']);
+
+#Login
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::middleware(['web', 'auth'])->group(function () {
+    
+    
+});

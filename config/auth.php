@@ -38,7 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'usuarios',
+        ],
+
+        'usuario' => [
+            'driver' => 'session',
+            'provider' => 'usuarios',
+        ],
+
+        'motoqueiro' => [
+            'driver' => 'session',
+            'provider' => 'motoqueiros',
         ],
     ],
 
@@ -60,15 +70,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'usuarios' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Usuario::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'motoqueiros' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Motoqueiro::class,
+        ],
     ],
 
     /*
@@ -87,11 +96,20 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'usuarios' => [
+            'provider' => 'usuarios',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+            'column' => 'senha'
+        ],
+
+        'motoqueiros' => [
+            'provider' => 'motoqueiros',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+            'column' => 'senha'
         ],
     ],
 
