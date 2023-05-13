@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Motoqueiro;
+use Illuminate\Support\Facades\Hash;
 
 class MotoqueirosController extends Controller
 {
@@ -17,7 +18,7 @@ class MotoqueirosController extends Controller
             'idMotoqueiro' => $request->idMotoqueiro,
             'nome' => $request->nome,
             'telefone' => $request->telefone,
-            'senha' => $request->senha
+            'senha' => Hash::make($request->senha)
         ]);
 
         $motoqueiro->save();
