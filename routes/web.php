@@ -27,34 +27,35 @@ Route::middleware(['web', 'auth'])->group(function () {
         return view('home');
     });
 
-    #Login
+    #Logout
     Route::post('/logout', [LoginController::class, 'logout']);
-    
-    ##Registro
-    Route::get('/registro', [RegistroController::class, 'registroForm']);
-    Route::post('/registro', [RegistroController::class, 'registro']);
 
-    ##Entregas
-    Route::get('/entrega', [EntregasController::class, 'index']);
+    Route::middleware(['checkSessionData'])->group(function () {
+        ##Motoqueiros
+        Route::get('/motoqueiro', [MotoqueirosController::class, 'index']);
+        Route::post('/motoqueiro', [MotoqueirosController::class, 'create']);
 
-    Route::post('/entrega', [EntregasController::class, 'create']);
-    Route::get('/entrega/all', [EntregasController::class, 'read']);
+        Route::get('/motoqueiro/edit/{id}', [MotoqueirosController::class, 'edit']);
+        Route::put('/motoqueiro/update/{id}', [MotoqueirosController::class, 'update']);
 
-    Route::get('entrega/edit/{id}', [EntregasController::class, 'edit']);
-    Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
+        ##Clientes
+        Route::get('/cliente', [ClientesController::class, 'index']);
+        Route::post('/cliente', [ClientesController::class, 'create']);
 
+        Route::get('/cliente/edit/{id}', [ClientesController::class, 'edit']);
+        Route::put('/cliente/update/{id}', [ClientesController::class, 'update']);
 
-    ##Clientes
-    Route::get('/cliente', [ClientesController::class, 'index']);
-    Route::post('/cliente', [ClientesController::class, 'create']);
+        ##Registro
+        Route::get('/registro', [RegistroController::class, 'registroForm']);
+        Route::post('/registro', [RegistroController::class, 'registro']);
 
-    Route::get('/cliente/edit/{id}', [ClientesController::class, 'edit']);
-    Route::put('/cliente/update/{id}', [ClientesController::class, 'update']);
+        ##Entregas
+        Route::get('/entrega', [EntregasController::class, 'index']);
 
-    ##Motoqueiros
-    Route::get('/motoqueiro', [MotoqueirosController::class, 'index']);
-    Route::post('/motoqueiro', [MotoqueirosController::class, 'create']);
+        Route::post('/entrega', [EntregasController::class, 'create']);
+        Route::get('/entrega/all', [EntregasController::class, 'read']);
 
-    Route::get('/motoqueiro/edit/{id}', [MotoqueirosController::class, 'edit']);
-    Route::put('/motoqueiro/update/{id}', [MotoqueirosController::class, 'update']);
+        Route::get('entrega/edit/{id}', [EntregasController::class, 'edit']);
+        Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
+    });
 });
