@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class Usuario extends Authenticatable
-{
+{    
     protected $table = 'usuarios';
     // protected $password = 'senha';
 
@@ -19,12 +19,17 @@ class Usuario extends Authenticatable
     ]; 
 
     protected $hidden = [
-        'password', 'remember_token',
+        'senha', 'remember_token',
     ];
     
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    public function findForPassword($telefone) {
+        return $this->orWhere('telefone', $telefone)->orWhere('email', $telefone)->first();
+    }
+
     use HasFactory;
+
 }

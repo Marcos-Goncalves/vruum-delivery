@@ -14,7 +14,7 @@ class EntregasController extends Controller
     public function read(Request $request){
         $entregas = Entrega::all();
 
-        return $entregas;
+        return view('home', ['data'=>$entregas]);
     }
 
     public function create(Request $request) {

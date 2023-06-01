@@ -1,0 +1,144 @@
+.boxLogin,
+.boxCadastro,
+.boxUsuarios,
+.boxClientes,
+.boxMotociclistas,
+.boxEntregas {
+width: 350px;
+height: auto;
+border-radius: 30px;
+background: linear-gradient(145deg, #3c3658, #3c3658);
+box-shadow: 1px 1px 20px #000, -1px -1px 10px #000;
+display: block;
+justify-content: center;
+align-items: center;
+margin: auto;
+margin-top: 130px;
+}
+
+#teste,
+#icLogoVruum {
+background-color: #3c3658;
+}
+
+.icLogoVruum,
+.icLogo {
+width: 75%;
+height: 75%;
+}
+
+.textLogin,
+.textUser,
+.textSenha,
+.textPasswd,
+.textTel,
+.textCadastro,
+.textTitulo,
+.textDados {
+display: flex;
+color: white;
+align-items: center;
+justify-content: center;
+}
+
+.textLogin {
+margin-top: 5%;
+margin-left: 100px;
+}
+
+.textUser {
+margin-top: 20%;
+}
+
+.inputUser,
+.inputSenha,
+.inputTel,
+.inputDados,
+.inputPasswd {
+display: flex;
+align-items: center;
+justify-content: center;
+margin: auto;
+}
+
+.btnEntrar,
+.btnCadastrar,
+.btnEnviar,
+.btn-outline-primary {
+display: flex;
+align-items: center;
+justify-content: center;
+margin: auto;
+}
+
+.textCadastro {
+font-size: 65%;
+font-family: sans-serif;
+margin-top: 5%;
+color: whitesmoke;
+}
+
+body {
+background-color: #331e36;
+background: linear-gradient(90deg, #331e36, #150017);
+}
+
+.linkCadastro {
+text-decoration: none;
+color: #0d6efd;
+font-family: sans-serif;
+font-weight: bold;
+}
+
+a:hover {
+color: black;
+}
+
+.custom-navbar .nav-link,
+.rating label {
+color: white;
+}
+
+.kanban-heading {
+display: flex;
+flex-direction: row;
+justify-content: center;
+font-family: sans-serif;
+}
+
+.kanban-heading-text {
+font-size: 1.8rem;
+color: white;
+padding: 0.8rem 1.7rem;
+border-radius: 0.5rem;
+margin: 1rem;
+}
+
+.task {
+color: white;
+text-align: center;
+margin: 0.5rem 0rem 0.4rem 0rem;
+border: 0.1rem solid #0dcaf0;
+border-radius: 0.2rem;
+position: relative;
+padding: 2px;
+}
+
+.task:hover {
+color: white;
+font-weight: bold;
+background-color: #0dcaf0;
+top: -2px;
+padding-bottom: 2px;
+filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+#taskButton {
+color: white;
+width: 100%;
+box-sizing: border-box;
+font-size: 1rem;
+font-weight: bold;
+padding: 2px;
+position: relative;
+}

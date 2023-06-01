@@ -22,10 +22,27 @@ use App\Http\Controllers\RegistroController;
 Route::get('/login', [LoginController::class, 'loginForm']);
 Route::post('/login', [LoginController::class, 'login']);
 
+// Route::group(['prefix' => 'motoqueiro'], function() {
+//     Route::get('/login', [MotoqueirosController::class, 'loginForm']);
+//     Route::post('/login', [MotoqueirosController::class, 'login'])->name('motoqueiro.login.form');
+// });
+
+// Route::group(['prefix' => 'usuario'], function() {
+//     Route::get('/registro', [RegistroController::class, 'registroForm']);
+//     Route::post('/register', [LoginController::class, 'register']);
+//     Route::get('/login', [LoginController::class, 'loginForm']);
+//     Route::post('/login', [LoginController::class, 'login'])->name('motoqueiro.login.form');
+//     Route::post('/logout', [LoginController::class, 'logout']);
+// });
+
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/home', function(){
-        return view('home');
-    });
+    Route::get('/home', [EntregasController::class, 'read']);
+    // Route::get('/home', function(){
+    //     return view('home');
+    // });
+
+    ##Fila
+    Route::put('/motoqueiro/{id}/status', [MotoqueirosController::class, 'updateStatus']);
 
     #Logout
     Route::post('/logout', [LoginController::class, 'logout']);
@@ -50,12 +67,17 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('/registro', [RegistroController::class, 'registro']);
 
         ##Entregas
-        Route::get('/entrega', [EntregasController::class, 'index']);
+        Route::get('/entrega', [EntregasController::class, 'index'])->name('entrega');
 
         Route::post('/entrega', [EntregasController::class, 'create']);
         Route::get('/entrega/all', [EntregasController::class, 'read']);
 
-        Route::get('entrega/edit/{id}', [EntregasController::class, 'edit']);
+        Route::get('entrega/edit/{id}', [EntregasController::class, 'edit'])->name('entrega.edit');
         Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
     });
 });
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkUserRole:usuario');
+    // Route::get('/home', function(){
+    //     return view('home');
+    // });

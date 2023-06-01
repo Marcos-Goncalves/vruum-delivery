@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Auth\Guard;
 use App\Models\Usuario;
 use App\Models\Motoqueiro;
 
@@ -17,30 +18,28 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(Request $request):RedirectResponse{
+    public function register(Request $request)
+    {
+        Usuario::create([
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'senha' => Hash::make($request->senha),
+        ]);
 
-        $usuario = $request->only('telefone', 'senha');
+        return redirect()->route('/home');
+    }
 
-        $user = Usuario::where('telefone', $usuario['telefone'])->first();
-        $tipoUsuario = "usuario";
+    public function login(Request $request) {
+        $credentials = $request->only('telefone', 'senha');
 
-        if (!$user) {
-            // Verifica na tabela "Motoqueiro"
-            $user = Motoqueiro::where('telefone', $usuario['telefone'])->first();
-            $tipoUsuario = "motoqueiro";
-        }
-    
-
-        if ($user && Hash::check($usuario['senha'], $user->senha)) {
-            // Autenticação bem-sucedida
-
-            Session::put('tipoUsuario', $tipoUsuario);
+        $user = Motoqueiro::where('telefone', $credentials['telefone'])->first();
+        
+        if ($user && Hash::check($credentials['senha'], $user->senha)) {
             Auth::login($user);
-
             return redirect()->intended('/home');
+        } else {
+            return redirect()->back()->withErrors(['message' => 'Credentials']);
         }
-
-        return redirect()->back()->withErrors(['message' => 'Usuario Invalido!']);
     }
 
     public function logout(Request $request){
