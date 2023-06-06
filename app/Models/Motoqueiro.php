@@ -27,4 +27,9 @@ class Motoqueiro extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     use HasFactory;
+
+    public function entregas()
+    {
+        return $this->hasMany(Entrega::class, 'idMotoqueiro');
+    }
 }

@@ -21,9 +21,14 @@ class EntregasController extends Controller
 
         $entrega = Entrega::create([
             'idCliente' => $request->idCliente,
-            'enderecoPartida' => $request->enderecoPartida,
-            'enderecoEntrega' => $request->enderecoEntrega,
-            'obs' => $request->obs,
+            'cep' => $request->cep,
+            'rua' => $request->rua,
+            'numero' => $request->numero,
+            'bairro' => $request->bairro,
+            'cepEntrega' => $request->cepEntrega,
+            'ruaEntrega' => $request->ruaEntrega,
+            'numeroEntrega' => $request->numeroEntrega,
+            'bairroEntrega' => $request->bairroEntrega,
             'status' => $request->status,
             'idMotoqueiro' => $request->idMotoqueiro,
             'horarioEntrega' => $request->horarioEntrega
@@ -31,16 +36,20 @@ class EntregasController extends Controller
 
         $entrega->save();
 
-        return redirect('entrega');
+        return redirect('home');
     }
 
     public function edit($id){
         $entrega = Entrega::find($id);
-        return view('editEntrega', ['entrega'=> $entrega]);
+        return response()->json($entrega);
+        // return view('modal', ['entrega'=> $entrega]);
     }
 
     public function update(Request $request){
-        Entrega::find($request->id)->update($request->all());
-        return redirect('/entrega');
+        // Entrega::find($request->id)->update($request->all());
+        $entrega = Entrega::find($request->id);
+        $entrega->update($request->all());
+        $entrega->setarStatusEmAndamento();
+        return redirect('/home');
     }
 }

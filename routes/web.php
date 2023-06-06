@@ -54,8 +54,10 @@ Route::middleware(['web', 'auth'])->group(function () {
 
         Route::get('/motoqueiro/edit/{id}', [MotoqueirosController::class, 'edit']);
         Route::put('/motoqueiro/update/{id}', [MotoqueirosController::class, 'update']);
+        Route::get('/motoqueiro/read', [MotoqueirosController::class, 'read']);
 
         ##Clientes
+        Route::get('/cliente/read', [ClientesController::class, 'read'])->name('cliente.read');
         Route::get('/cliente', [ClientesController::class, 'index']);
         Route::post('/cliente', [ClientesController::class, 'create']);
 

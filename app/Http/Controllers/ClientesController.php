@@ -11,6 +11,12 @@ class ClientesController extends Controller
         return view('createCliente');
     }
 
+    public function read(Request $request){
+        $clientes = Cliente::all();
+
+        return response()->json($clientes);
+    }
+
     public function create(Request $request){
 
         $cliente = Cliente::create([
