@@ -56,6 +56,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::put('/motoqueiro/update/{id}', [MotoqueirosController::class, 'update']);
         Route::get('/motoqueiro/read', [MotoqueirosController::class, 'read']);
 
+        Route::get('/motoqueiro/list', [MotoqueirosController::class, 'listAll']);
+
         ##Clientes
         Route::get('/cliente/read', [ClientesController::class, 'read'])->name('cliente.read');
         Route::get('/cliente', [ClientesController::class, 'index']);
@@ -64,9 +66,16 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/cliente/edit/{id}', [ClientesController::class, 'edit']);
         Route::put('/cliente/update/{id}', [ClientesController::class, 'update']);
 
+        Route::get('/cliente/list', [ClientesController::class, 'listAll']);
+
         ##Registro
         Route::get('/registro', [RegistroController::class, 'registroForm']);
         Route::post('/registro', [RegistroController::class, 'registro']);
+
+        Route::get('/registro/edit/{id}', [RegistroController::class, 'edit']);
+        Route::put('/registro/update/{id}', [RegistroController::class, 'update']);
+
+        Route::get('/registro/list', [RegistroController::class, 'listAll']);
 
         ##Entregas
         Route::get('/entrega', [EntregasController::class, 'index'])->name('entrega');
@@ -76,6 +85,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
         Route::get('entrega/edit/{id}', [EntregasController::class, 'edit'])->name('entrega.edit');
         Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
+
+        Route::get('/entrega/list', [EntregasController::class, 'listAll']);
     });
 });
 

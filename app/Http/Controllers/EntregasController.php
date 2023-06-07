@@ -17,6 +17,12 @@ class EntregasController extends Controller
         return view('home', ['data'=>$entregas]);
     }
 
+    public function listAll(Request $request){
+        $entregas = Entrega::all();
+
+        return view('listEntrega', ['entregas'=>$entregas]);
+    }
+
     public function create(Request $request) {
 
         $entrega = Entrega::create([

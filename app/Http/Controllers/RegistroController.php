@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class RegistroController extends Controller
 {
     public function registroForm(){
-        return view('registro');
+        return view('createGestor');
+    }
+
+    public function listAll(){
+        $gestores = Usuario::all();
+
+        return view('listGestor', ['gestores' => $gestores]);
     }
 
     public function registro(Request $request){
@@ -26,6 +32,16 @@ class RegistroController extends Controller
             'senha' => Hash::make($request->senha)
         ]);
 
-        return redirect()->intended('/home');
+        return redirect()->intended('/registro/list');
+    }
+
+    public function edit($id){
+        $gestor = Usuario::find($id);
+        return view('editGestor', ['gestor'=>$gestor]);
+    }
+
+    public function update(Request $request){
+        Usuario::find($request->id)->update($request->all());
+        return redirect('/registro/list');
     }
 }

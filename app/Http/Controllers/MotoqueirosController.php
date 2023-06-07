@@ -13,6 +13,12 @@ class MotoqueirosController extends Controller
         return view('createMotoqueiro');
     }
 
+    public function listAll(){
+        $motoqueiros = Motoqueiro::all();
+
+        return view("listMotoqueiro", ['motoqueiros' => $motoqueiros]);
+    }
+
     public function login(Request $request) {
         $credentials = $request->only("telefone", "senha");
 
@@ -44,7 +50,7 @@ class MotoqueirosController extends Controller
 
     public function update(Request $request){
         Motoqueiro::find($request->id)->update($request->all());
-        return redirect('/motoqueiro');
+        return redirect('/motoqueiro/list');
     }
 
     // public function updateStatus(Request $request, $id)

@@ -10,7 +10,7 @@
     crossorigin="anonymous"></script>
   <link rel="icon" type="image/x-icon" href="logo_V.png" />
   <title>
-    Vruum Delivery - Clientes
+    Vruum Delivery - Usuários
   </title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" />
 </head>
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" id="teste">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img id="icLogo" src="logo_25.png">
+          <img class="icLogoVruum" src="logo_25.png">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,29 +73,29 @@
       margin: auto;
       margin-top: 130px;">
       <div class="card-head" style="margin: auto;">
-        <div class="textCadCliente" style="margin: auto;color: white;">
+        <div class="textCadGestor" style="margin: auto;color: white;">
           <p class="text-start" id="logintxt">
-          <h6>Cadastro Clientes</h6>
+          <h6>Cadastro Gestores</h6>
           </p>
         </div>
       </div>
       <div class="card-body">
         <form action="/registro" method="POST">
-          @csrf
+            @csrf
           <div class="col-md-6" style="margin: auto;">
-            <label for="inputNameCliente" class="form-label"
+            <label for="inputNameGestor" class="form-label"
               style="color: white;display: flex;justify-content: center;">Nome:</label>
             <input type="text" class="form-control" id="inputUser" maxlength="100" name="nome">
           </div>
           <div class="col-md-6" style="margin: auto;">
-            <label for="inputTelefoneCliente" class="form-label"
+            <label for="inputTelefoneGestor" class="form-label"
               style="color: white;display: flex;justify-content: center;">Telefone:</label>
-            <input type="text" id="telefoneCliente" class="form-control" name="telefone">
+            <input type="text" id="telefoneGestor" class="form-control" name="telefone">
           </div>
           <div class="col-md-6" style="margin: auto;">
-            <label for="inputTelefoneCliente" class="form-label"
-              style="color: white;display: flex;justify-content: center;">Avaliação:</label>
-            <input type="text" id="telefoneCliente" class="form-control" name="avaliacao">
+            <label for="inputSenhaGestor" class="form-label"
+              style="color: white;display: flex;justify-content: center;">Senha:</label>
+            <input type="password" class="form-control" id="inputSenha" maxlength="100" name="senha">
           </div>
           <div class="btnEntrar" style="margin-top: 10px;">
             <button type="submit" value="submit" class="btn btn-outline-primary">Cadastrar</button>
@@ -106,7 +106,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
       $(document).ready(function () {
-        $('#telefoneCliente').mask('(00) 00000-0000'); // Aplica a máscara ao campo de telefone
+        $('#telefoneGestor').mask('(00) 00000-0000'); // Aplica a máscara ao campo de telefone
       });
     </script>
   </body>

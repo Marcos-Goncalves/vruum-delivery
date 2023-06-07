@@ -17,6 +17,12 @@ class ClientesController extends Controller
         return response()->json($clientes);
     }
 
+    public function listAll(Request $request){
+        $clientes = Cliente::all();
+
+        return view('listCliente', ['clientes' => $clientes]);
+    }
+
     public function create(Request $request){
 
         $cliente = Cliente::create([
@@ -37,6 +43,6 @@ class ClientesController extends Controller
 
     public function update(Request $request){
         Cliente::find($request->id)->update($request->all());
-        return redirect('/cliente');
+        return redirect('/cliente/list');
     }
 }

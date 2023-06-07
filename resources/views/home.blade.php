@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="gestorindex.html">Dashboard</a>
+              <a class="nav-link" aria-current="page" href="/home">Dashboard</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -37,12 +37,8 @@
                 Clientes
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cadastroClientes.html">Cadastrar Cliente</a></li>
-                <li><a class="dropdown-item" href="#">Clientes cadastrados</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Avaliações Clientes</a></li>
+                <li><a class="dropdown-item" href="/cliente">Cadastrar Cliente</a></li>
+                <li><a class="dropdown-item" href="/cliente/list">Clientes cadastrados</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -51,12 +47,8 @@
                 Motociclistas
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cadastroMotociclistas.html">Cadastrar Motociclistas</a></li>
-                <li><a class="dropdown-item" href="#">Motociclistas Cadastrados</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Avaliações Motociclistas</a></li>
+                <li><a class="dropdown-item" href="/motoqueiro">Cadastrar Motociclistas</a></li>
+                <li><a class="dropdown-item" href="/motoqueiro/list">Motociclistas Cadastrados</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -65,8 +57,8 @@
                 Gestores
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cadastroUsuarios.html">Cadastrar Gestores</a></li>
-                <li><a class="dropdown-item" href="#">Gestores Cadastrados</a></li>
+                <li><a class="dropdown-item" href="/registro">Cadastrar Gestores</a></li>
+                <li><a class="dropdown-item" href="/registro/list">Gestores Cadastrados</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -75,7 +67,7 @@
                 Entregas
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Entregas realizadas</a></li>
+                <li><a class="dropdown-item" href="/entrega/list">Entregas realizadas</a></li>
               </ul>
             </li>
           </ul>
@@ -507,6 +499,11 @@
               success: function (data) {
                   var motoqueiros = data;
 
+                  // Ordena os motoqueiros de acordo com o campo "fila_ordem"
+                  motoqueiros.sort(function(a, b) {
+                      return a.fila_ordem - b.fila_ordem;
+                  });
+
                   // Limpa o combobox
                   selectMotoqueiro.innerHTML = '';
 
@@ -514,7 +511,7 @@
                   motoqueiros.forEach(function (motoqueiro) {
                       var option = document.createElement('option');
                       option.value = motoqueiro.id;
-                      option.text = motoqueiro.nome;
+                      option.text = motoqueiro.nome + ' - ' + motoqueiro.fila_ordem + 'º';
                       selectMotoqueiro.appendChild(option);
                   });
 
