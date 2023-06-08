@@ -70,6 +70,18 @@
                 <li><a class="dropdown-item" href="/entrega/list">Entregas realizadas</a></li>
               </ul>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{Session::get('user_name')}}
+              </a>
+              <ul class="dropdown-menu">
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit">Logout</button>
+                </form>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>

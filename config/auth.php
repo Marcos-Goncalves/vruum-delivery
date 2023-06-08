@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'motoqueiro',
-        'passwords' => 'motoqueiros',
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -36,17 +36,17 @@ return [
     */
 
     'guards' => [
-        // 'web' => [
-        //     'driver' => 'session',
-        //     'provider' => 'motoqueiros',
-        // ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'motoqueiros',
+        ],
 
-        'usuario' => [
+        'usuarios' => [
             'driver' => 'session',
             'provider' => 'usuarios',
         ],
 
-        'motoqueiro' => [
+        'motoqueiros' => [
             'driver' => 'session',
             'provider' => 'motoqueiros',
         ],

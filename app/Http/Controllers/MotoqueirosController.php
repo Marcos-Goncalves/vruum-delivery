@@ -13,6 +13,11 @@ class MotoqueirosController extends Controller
         return view('createMotoqueiro');
     }
 
+    public function home(){
+        return view('homeMotoqueiro');
+    }
+
+
     public function listAll(){
         $motoqueiros = Motoqueiro::all();
 

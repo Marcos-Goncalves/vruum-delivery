@@ -35,8 +35,11 @@ Route::post('/login', [LoginController::class, 'login']);
 //     Route::post('/logout', [LoginController::class, 'logout']);
 // });
 
+Route::get('/home', [EntregasController::class, 'read']);
+
+Route::get('/home/motociclista', [MotoqueirosController::class, 'home']);
+
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/home', [EntregasController::class, 'read']);
     // Route::get('/home', function(){
     //     return view('home');
     // });
