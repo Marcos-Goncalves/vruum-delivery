@@ -27,6 +27,10 @@ class MotoqueirosController extends Controller
                             ->where('status', 'EM ANDAMENTO')
                             ->first();
 
+        if (!$entregas) {
+            return view('homeMotoqueiroWait');
+        }
+    
         return view('homeMotoqueiro', ['entregas' => $entregas]);
     }
 

@@ -45,7 +45,7 @@ Route::put('/motoqueiro/{id}/status', [MotoqueirosController::class, 'updateStat
 
 Route::put('/home/motociclista/finalizar/{id}', [EntregasController::class, 'finalizarEntrega']);
 
-Route::middleware(['web', 'auth'])->group(function () {
+// Route::middleware(['web', 'auth'])->group(function () {
     // Route::get('/home', function(){
     //     return view('home');
     // });
@@ -54,7 +54,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     #Logout
 
-    Route::middleware(['checkSessionData'])->group(function () {
+    // Route::middleware(['checkSessionData'])->group(function () {
         ##Motoqueiros
         Route::get('/motoqueiro', [MotoqueirosController::class, 'index']);
         Route::post('/motoqueiro', [MotoqueirosController::class, 'create']);
@@ -94,8 +94,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::put('entrega/update/{id}', [EntregasController::class, 'update']);
 
         Route::get('/entrega/list', [EntregasController::class, 'listAll']);
-    });
-});
+    // });
+// });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkUserRole:usuario');
     // Route::get('/home', function(){
