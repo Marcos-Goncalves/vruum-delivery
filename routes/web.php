@@ -39,16 +39,20 @@ Route::get('/home', [EntregasController::class, 'read']);
 
 Route::get('/home/motociclista', [MotoqueirosController::class, 'home']);
 
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::put('/motoqueiro/{id}/status', [MotoqueirosController::class, 'updateStatus']);
+
+Route::put('/home/motociclista/finalizar/{id}', [EntregasController::class, 'finalizarEntrega']);
+
 Route::middleware(['web', 'auth'])->group(function () {
     // Route::get('/home', function(){
     //     return view('home');
     // });
 
     ##Fila
-    Route::put('/motoqueiro/{id}/status', [MotoqueirosController::class, 'updateStatus']);
 
     #Logout
-    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::middleware(['checkSessionData'])->group(function () {
         ##Motoqueiros

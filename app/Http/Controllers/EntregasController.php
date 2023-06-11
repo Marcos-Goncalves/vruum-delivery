@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entrega;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon; // Importe a classe Carbon para manipulação de datas e horários
 
 class EntregasController extends Controller
 {
@@ -57,5 +60,22 @@ class EntregasController extends Controller
         $entrega->update($request->all());
         $entrega->setarStatusEmAndamento();
         return redirect('/home');
+    }
+
+    public function finalizarEntrega(Request $request, $id){
+        $entrega = Entrega::find($id);
+
+        $entrega->status = 'CONCLUÍDO';
+        $entrega->horarioEntrega = Carbon::now();
+
+        $cliente = Cliente::find($entrega->idCliente);
+        $valorAvaliacao = $cliente->avaliacao; // Valor atual de avaliação
+        $novaAvaliacao = ($valorAvaliacao + $request->ratingCliente) / 2; // Calcula a nova avaliação
+        $cliente->avaliacao = $novaAvaliacao;
+
+        $entrega->save();
+        $cliente->save();
+
+        return redirect()->back()->with('success', 'Entrega finalizada com sucesso!');   
     }
 }

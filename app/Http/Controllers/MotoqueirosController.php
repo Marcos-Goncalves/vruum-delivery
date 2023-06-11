@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Motoqueiro;
+// use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Models\Entrega;
+
+
 
 class MotoqueirosController extends Controller
 {
@@ -14,7 +19,15 @@ class MotoqueirosController extends Controller
     }
 
     public function home(){
-        return view('homeMotoqueiro');
+        // Obtenha o id do motoqueiro da sessão
+        $idMotoqueiro = Session::get('user_id');
+
+        // Carregue os dados da tabela "Entregas" onde o idMotoqueiro seja igual ao valor da sessão
+        $entregas = Entrega::where('idMotoqueiro', $idMotoqueiro)
+                            ->where('status', 'EM ANDAMENTO')
+                            ->first();
+
+        return view('homeMotoqueiro', ['entregas' => $entregas]);
     }
 
 
@@ -70,11 +83,10 @@ class MotoqueirosController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $user = Motoqueiro::findOrFail($id);
-        
-        if ($user->status === 'ONLINE' && $request->input('status') === 'OFFLINE') {
+        if ($user->status === 'ONLINE' && $request->status === 'OFFLINE') {
             // Verifica se o usuário está mudando de online para offline
             $user->fila_ordem = null;
-        } elseif ($user->status === 'OFFLINE' && $request->input('status') === 'ONLINE') {
+        } elseif ($user->status === 'OFFLINE' && $request->status === 'ONLINE') {
             // Verifica se o usuário está mudando de offline para online
         
             // Encontra o próximo usuário na fila
@@ -91,7 +103,8 @@ class MotoqueirosController extends Controller
             }
         }
     
-        $user->status = $request->input('status');
+        $user->status = $request->status;
+        Session::put('user_status', $user->status);
         $user->save();
     
         return redirect()->back()->with('success', 'Status atualizado com sucesso.');   

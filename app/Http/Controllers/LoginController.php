@@ -83,6 +83,7 @@ class LoginController extends Controller
     {
         Session::put('user_id', $user->id);
         Session::put('user_name', $user->nome);
+        Session::put('user_status', $user->status);
         Session::put('logged_in', true);
     }
 
@@ -91,6 +92,7 @@ class LoginController extends Controller
     {
         Session::forget('user_id');
         Session::forget('user_name');
+        Session::forget('user_status');
         Session::forget('logged_in');
         return redirect('/login');
     }
