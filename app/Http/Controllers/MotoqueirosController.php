@@ -62,7 +62,7 @@ class MotoqueirosController extends Controller
 
         $motoqueiro->save();
 
-        return redirect('motoqueiro');
+        return redirect('/motoqueiro/list');
     }
 
     public function edit($id){

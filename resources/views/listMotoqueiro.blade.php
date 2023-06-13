@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="logo_V.png" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo_V.png') }}" />
     <title>
         Vruum Delivery - Motociclistas
     </title>
@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark" id="teste">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img id="icLogo" src="logo_25.png">
+                    <img id="icLogo" src="{{ asset('images/logo_25.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

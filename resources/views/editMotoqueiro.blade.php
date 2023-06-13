@@ -36,7 +36,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
-        <link rel="icon" type="image/x-icon" href="logo_V.png" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/logo_V.png') }}" />
         <title>
             Vruum Delivery - Motociclistas
         </title>
@@ -47,7 +47,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark" id="teste">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
-                <img class="icLogoVruum" src="logo_25.png">
+                <img class="icLogoVruum" src="{{ asset('images/logo_25.png') }}">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -142,3 +142,10 @@ font-weight: bold;
 padding: 2px;
 position: relative;
 }
+
+#boxMotociclista{
+    border-radius: 30px;
+    background: linear-gradient(145deg, #3C3658, #3C3658);
+    box-shadow:  1px 1px 20px #000,
+                 -1px -1px 10px #000;
+  }

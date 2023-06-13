@@ -33,7 +33,7 @@ class ClientesController extends Controller
 
         $cliente->save();
 
-        return redirect('cliente');
+        return redirect('/cliente/list');
     }
 
     public function edit($id){

@@ -10,7 +10,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
     crossorigin="anonymous"></script>
-  <link rel="icon" type="image/x-icon" href="logo_V.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/logo_V.png') }}" />
   <title>Vruum Delivery - Gestor</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" />
 </head>
@@ -20,7 +21,7 @@
     <nav class="navbar navbar-expand-lg custom-navbar" id="teste">
       <div class="container-fluid">
         <a class="navbar-brand">
-          <img class="icLogoVruum" src="logo_25.png" alt="Logo">
+          <img class="icLogoVruum" src="{{ asset('images/logo_25.png') }}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,18 +71,21 @@
                 <li><a class="dropdown-item" href="/entrega/list">Entregas realizadas</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                {{Session::get('user_name')}}
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown" style="margin-right: ;">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="margin-left: auto;">
+                  <i class="fas fa-user"></i> {{Session::get('user_name')}}
+                </span>
               </a>
               <ul class="dropdown-menu">
                 <form action="/logout" method="POST">
                   @csrf
-                  <button type="submit">Logout</button>
+                  <button class="btn bg-transparent" type="submit">Logout</button>
                 </form>
               </ul>
-            </li>
+            </li> 
           </ul>
         </div>
       </div>
@@ -205,7 +209,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body">
-                <form action="{{ route('entrega.edit', ['id' => $entrega->id]) }}" method="POST" id="myForm2" class="row g-3 needs-validation" novalidate>
+                <form action="{{ route('entrega.edit', ['id' => $entrega->id ?? 0]) }}" method="POST" id="myForm2" class="row g-3 needs-validation" novalidate>
                   @csrf
                   @method('PUT')
                   <div class="col-md-15">
